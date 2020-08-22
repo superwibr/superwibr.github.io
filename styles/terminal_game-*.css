@@ -10,11 +10,6 @@
                 
 =============================
 */
-@font-face 		{
-    font-family: 'Share Tech Mono';
-    src: local('â˜º'), url('https://n-o-d-e.live/fonts/font.woff') format('woff'), url('https://n-o-d-e.live/fonts/font.ttf') format('truetype')
-    }
-
 body {
     font-family: Monospace, Courier;
     color: #c8c8c8;

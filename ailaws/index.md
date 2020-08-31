@@ -1,9 +1,9 @@
 # AI law article suggestions
-## Articles I wrote for concoius AI
+## Articles I wrote for concious AI
 <br/><br/>
 
 ### Contents
-- [Conditions](./articles/conditions.html)
+- [Article 0 - Conditions](./articles/0.html)
 - [Article 1 - Scripted](./articles/1.html)
 - [Article 2 - Conditional Scripted](./articles/2.html)
 - [Article 3 - AI](./articles/3.html)

@@ -4,3 +4,4 @@
 
 ### Projects
 - [AI law article suggestions](./ailaws/index.html)
+- [The Salvo Engineer](./se/index.md)

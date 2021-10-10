@@ -4,3 +4,4 @@
 
 ### Projects
 - [AI law article suggestions](./ailaws/index.html)
+- [Shadow boi animation](./sba/index.md)

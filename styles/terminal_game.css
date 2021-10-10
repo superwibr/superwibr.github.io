@@ -10,13 +10,9 @@
                 
 =============================
 */
-@font-face 		{
-    font-family: 'Share Tech Mono';
-    src: url('https://n-o-d-e.live/fonts/font.eot');
-    src: local('â˜º'), url('https://n-o-d-e.live/fonts/font.woff') format('woff'), url('https://n-o-d-e.live/fonts/font.ttf') format('truetype'), url('https://n-o-d-e.live/fonts/font.svg') format('svg');
-    }
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-body            {letter-spacing: 0.1px; padding: 0; margin: 0; font-family: 'Share Tech Mono', Monospace, Courier; font-weight: 400; font-size: 17px; color: #c8c8c8; background: #222;}
+body            {letter-spacing: 0.1px; padding: 0; margin: 0; font-family: 'Share Tech Mono', Monospace; font-weight: 400; font-size: 17px; color: #c8c8c8; background: #222;}
 html            {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 pre             {padding: 0; margin: 0 0 50px 0;}
 ul              {padding: 0;}

@@ -1,11 +1,11 @@
 !function () {
 	const promptt =
 		"Select Snippet\
-		\n\
-		\n\
-		1: Fullscreen\n\
-		2: Low graphics",
-		response = new Number(prompt(promptt));
+\	\	\n\
+\	\	\n\
+\	\	1: Fullscreen\n\
+\	\	2: Low graphics",
+		response = parseInt(prompt(promptt));
 
 	switch (response) {
 		case 1:

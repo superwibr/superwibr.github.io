@@ -1,0 +1,53 @@
+/*
+ *	Superwibr's Neomorphic CSS
+ *
+ *	A "css-lib" for quick neomorphic conversion
+ *
+*/
+
+:root {
+	--ON: initial;
+	--OFF: ;
+}
+
+* {
+	/* magic */
+	background-color: var(--background-color, initial);
+}
+
+/* base */
+.neomorph {
+	border-radius: 50px;
+
+	/* magic */
+	width: var(--width);
+
+	--reflection: 0.08;
+	--elevation: 0.08;
+}
+
+/* direction (only top-left light for now.) */
+.neo-tl {
+	--shade: hsl(0, 0%, 75%);
+	--light: hsl(0, 0%, 100%);
+
+	box-shadow: calc(var(--width) * var(--elevation))
+				calc(var(--width) * var(--elevation)) 
+				calc(var(--width) * 0.24) var(--shade),
+				calc(var(--width) * var(--reflection) * -1)
+				calc(var(--width) * var(--reflection) * -1)
+				calc(var(--width) * 0.24) var(--light);
+}
+
+.neo-tl-inset {
+	box-shadow: inset calc(var(--width) * var(--elevation))
+				calc(var(--width) * var(--elevation))
+				calc(var(--width) * 0.24) 	hsl(0, 0%, 75%),
+				inset calc(var(--width) * var(--reflection) * -1)
+				calc(var(--width) * var(--reflection) * -1)
+				calc(var(--width) * 0.24) hsl(0, 0%, 100%);
+}
+
+/*.neo-tr{}
+.neo-bl{}
+.neo-br{}*/

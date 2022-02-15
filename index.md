@@ -6,6 +6,7 @@
 - [AI law article suggestions](./ailaws/index.html)
 - [Shadow boi animation](./sba/index.md)
 - [bool marl kets](./bml.md)
+- [Farre jot stuff](./farre/index.md)
 <br/><br/>
 
 ### [Documents](./docs/index.md)

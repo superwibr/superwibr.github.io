@@ -5,16 +5,6 @@
  *
 */
 
-:root {
-	--ON: initial;
-	--OFF: ;
-}
-
-* {
-	/* magic */
-	background-color: var(--background-color, initial);
-}
-
 /* base */
 .neomorph {
 	border-radius: 50px;
@@ -24,13 +14,13 @@
 
 	--reflection: 0.08;
 	--elevation: 0.08;
+	
+	--shade: hsla(0, 0%, 0%, 15%);
+	--light: hsla(0, 0%, 75%, 5%);
 }
 
 /* direction (only top-left light for now.) */
 .neo-tl {
-	--shade: hsl(0, 0%, 75%);
-	--light: hsl(0, 0%, 100%);
-
 	box-shadow: calc(var(--width) * var(--elevation))
 				calc(var(--width) * var(--elevation)) 
 				calc(var(--width) * 0.24) var(--shade),
@@ -42,10 +32,10 @@
 .neo-tl-inset {
 	box-shadow: inset calc(var(--width) * var(--elevation))
 				calc(var(--width) * var(--elevation))
-				calc(var(--width) * 0.24) 	hsl(0, 0%, 75%),
+				calc(var(--width) * 0.24) 	var(--shade),
 				inset calc(var(--width) * var(--reflection) * -1)
 				calc(var(--width) * var(--reflection) * -1)
-				calc(var(--width) * 0.24) hsl(0, 0%, 100%);
+				calc(var(--width) * 0.24) var(--light);
 }
 
 /*.neo-tr{}

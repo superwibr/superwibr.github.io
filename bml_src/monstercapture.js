@@ -34,7 +34,7 @@
 		const writer = new ID3Writer(mpfile);
 		writer.setFrame('TIT2', name)
 			.setFrame('TPE1', artists)
-			.setFrame('TPE2', release.ArtistsTitle)
+			.setFrame('TPE2', release.ArtistsTitle.split(' & '))
 			.setFrame('TALB', albumName)
 			.setFrame('TRCK', track.TrackNumber)
 			.setFrame('TCON', [track.GenrePrimary, track.GenreSecondary])

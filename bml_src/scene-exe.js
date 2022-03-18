@@ -1,3 +1,4 @@
+// nonfunctional. do not use.
 !function () {
 	const key = type => key => { // curried function to emulate key events
 			const map = {

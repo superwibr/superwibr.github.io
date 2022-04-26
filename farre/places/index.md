@@ -11,3 +11,4 @@
 
 ## Polarius
 A frozen planet exploited and mined by the inhabitants of Destiny.
+<image src="./polarius-map.jpg">

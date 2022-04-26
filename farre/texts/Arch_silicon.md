@@ -1,6 +1,6 @@
 # Arch silicon
 ## Trying to become rich by mining the mining machines for money
-You can see a map of Polarius [here](../placess)
+You can see a map of Polarius [here](../places)
 
 
 ### Ye works

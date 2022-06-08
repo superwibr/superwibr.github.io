@@ -8,6 +8,10 @@ sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu
 sudo dpkg --add-architecture i386
 sudo apt install --install-recommends winehq-stable
 
-# the boys
+# tools n stuff
 sudo apt install aptitude
+
+# the big boys
 sudo apt install lutris
+sudo apt install brave-browser
+sudo apt install steam

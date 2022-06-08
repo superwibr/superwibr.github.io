@@ -82,6 +82,9 @@
 	const relative = function (oc, rc) {
 		return [(oc[0] + rc[0]), (oc[1] + rc[1])];
 	}
+	const twopath = function(dest, ori){
+		let nodes = [[], []];
+	}
 
 	// bot logic
 	const beeline = async function (to, from, dist, pr = [0, 0]) {
@@ -104,6 +107,9 @@
 		
 
 		await beeline(to, from, dist, dir); // continue groovin
+	}
+	const slackline = function(to, from, dist){
+
 	}
 
 	//

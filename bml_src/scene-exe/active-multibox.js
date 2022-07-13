@@ -73,17 +73,26 @@
 	const dirdif = function (n1, n2) {
 		return (n1 > n2) ? 1 : -1;
 	}
-	const direction = function (oc, sc) {
-		return [dirdif(oc[0], sc[0]), dirdif(oc[1], sc[1])]
+	const direction = function (dest, ori) {
+		return [dirdif(dest[0], ori[0]), dirdif(dest[1], ori[1])];
 	}
-	const within = function (oc, sc, dist) {
-		return ((Math.abs(oc[0] - sc[0]) <= dist) && (Math.abs(oc[1] - sc[1]) <= dist));
+	const within = function (dest, ori, dist) {
+		return (relative(dest, ori)[0] <= dist) && (relative(dest, ori)[1] <= dist);
 	}
-	const relative = function (oc, rc) {
-		return [(oc[0] + rc[0]), (oc[1] + rc[1])];
+	const withinr = function (dest, ori, dist) {
+		return Math.sqrt((Math.abs(dest[0] - ori[0]) ** 2) + (Math.abs(dest[1] - ori[1]) ** 2)) < dist;
 	}
-	const twopath = function(dest, ori){
-		let nodes = [[], []];
+	const relative = function (dest, ori) {
+		return [Math.abs(dest[0] - ori[0]), Math.abs(dest[1] - ori[1])];
+	}
+	const crel = function (dest, rc) {
+		return [(dest[0] + rc[0]), (dest[1] + rc[1])];
+	}
+	const findN1 = function (dest, ori) {
+		const cdir = direction(dest, ori),
+			rc = relative(dest, ori),
+			sd = Math.min(...rc);
+		return [sd * cdir[0], sd * cdir[1]]
 	}
 
 	// bot logic
@@ -93,27 +102,25 @@
 		const dir = direction(to, from),
 			wtn = within(to, from, dist);
 
-		console.table({to, dir, wtn, pr});
-		console.log(dir, pr, dir != pr)
-		
-		if(wtn) return exe.inject([1, [0, 0]]);
+		console.table({ to, dir, wtn, pr });
 
-		// faulty if?
+		if (wtn) return exe.inject([1, [0, 0]]);
+
 		if (within(dir, pr, 0)) {
 			console.log("beeline dir: ", dir)
 			exe.inject([1, dir]);
 			await new Promise(res => setTimeout(res, 100)) // wait 1/10th of a second
 		}
-		
+
 
 		await beeline(to, from, dist, dir); // continue groovin
 	}
-	const slackline = function(to, from, dist){
+	const slackline = function (to, from, dist) {
 
 	}
 
 	//
-	// socket overrides
+	// sockket overrides
 	//
 
 	// storage

@@ -10,7 +10,7 @@ document.head.insertAdjacentHTML('beforeend', `\
 `)
 
 function inView(el) {
-	var sb = section.getBoundingClientRect();
+	var sb = document.body.getBoundingClientRect();
 	var eb = el.getBoundingClientRect();
 	return !((eb.top + eb.height < 0) || (eb.top > sb.height));
 }
@@ -22,6 +22,6 @@ function updateInView() {
 	}
 }
 
-section.onscroll = updateInView;
+document.body.onscroll = updateInView;
 
 updateInView();

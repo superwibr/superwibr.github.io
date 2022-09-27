@@ -18,7 +18,7 @@
 	for (const track of catalog.Tracks) {
 		// track info
 		const trackId = track.Id,
-			artists = track.Artists.map(x => x.Name),
+			artists = track.Artists.map(x => x.Name) || [track.ArtistsTitle],
 			albumName = track.Release.Title,
 			albumArtists = (track.Release.Artists || track.Release.ArtistsTitle);
 		let name = track.Title

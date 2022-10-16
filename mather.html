@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mather</title>
+
+    <style>
+        html {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function () { var script = document.createElement('script'); script.src = "https://cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init(); initlog() } })();
+
+        function dfsp(s, p) {
+            const x = (s + Math.sqrt(((s) ** 2) - 4 * p)) / 2,
+                y = s - x;
+
+            return [x, y];
+        };
+
+        function eagcd (num1, num2){
+            let a = Math.abs(num1);
+            let b = Math.abs(num2);
+            while (a && b && a !== b) {
+                if (a > b) {
+                    [a, b] = [a - b, b];
+                } else {
+                    [a, b] = [a, b - a];
+                };
+            };
+            return a || b;
+        };;
+
+        function initlog() {
+            const i = (c, d) => console.log(`%c${c} %c- ${d}`, "color:limegreen", "");
+            console.log(`
+                +--------------------+
+                | Superwibr's MATHER |
+                | math utilities     |
+                +--------------------+
+            `);
+            i("dfsp(sum, product)", "Deduce pair of numbers from their sum and product");
+            i("eagcd(number1, number2)", "Euclidean Algorithm to find the Greatest Common Divider of two numbers");
+        };
+    </script>
+</body>
+
+</html>

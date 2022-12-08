@@ -1,0 +1,7 @@
+body {
+    font-family: fantasy;
+    color: var(--ns-light);
+    background-color: var(--ns-bg);
+    margin: 0;
+    padding: 0;
+}

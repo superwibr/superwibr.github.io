@@ -1,6 +1,6 @@
 # Shadow boi animations
 
-- [JS => Catboy](./jscatboy.html)
+- [JS Catboy](./jscatboy.html)
 
 
 # Other things

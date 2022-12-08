@@ -1,11 +1,10 @@
 # More me.
-## Other stuff can be found on [slashsite.github.io](https://slashsite.github.io)
 <br/><br/>
 
 ### Projects
 - [Shadow boi animation](./sba/index.md)
-- [bool marl kets](./bml.md)
-- [Farre jot stuff](./farre/index.md)
+- [Bookmarklets](./bml.md)
+- [Farre](./farre/index.md)
 <br/><br/>
 
-### [Documents](./docs/index.md)
+[Documents](./docs/index.md)

@@ -8,8 +8,9 @@
 
 @import url(./general.css);
 @import url(./neumorph.css);
+@import url(./layout.css);
 
-html {
+:root {
     --ns-accent: #dc143c;
     --ns-bg: #282828;
     --ns-light: #c8c8c8;

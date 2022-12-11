@@ -8,13 +8,14 @@
 
 @import url(./general.css);
 @import url(./neumorph.css);
+@import url(./layout.css);
 
 html {
-    --ns-accent: #dc143c;
-    --ns-bg: #282828;
-    --ns-light: #c8c8c8;
+  --ns-accent: #dc143c;
+  --ns-bg: #282828;
+  --ns-light: #c8c8c8;
 
-    /* neomorph */
-    --ns-shade: hsla(0, 0%, 0%, 15%);
-	--ns-light: hsla(0, 0%, 75%, 5%);
+  /* neomorph */
+  --ns-shade: hsla(0, 0%, 0%, 15%);
+  --ns-light: hsla(0, 0%, 75%, 5%);
 }

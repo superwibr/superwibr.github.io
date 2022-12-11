@@ -1,7 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
 body {
-    font-family: fantasy;
-    color: var(--ns-light);
-    background-color: var(--ns-bg);
-    margin: 0;
-    padding: 0;
+  color: var(--ns-light);
+  background-color: var(--ns-bg);
+  font-family: 'Share Tech';
+}
+
+a {
+  color: #ccc;
+}
+a:hover {
+  background-color: #383838;
+}
+
+input,
+select {
+  color: #b6b7b7;
+  background-color: #292929;
+  transition: 300ms;
+}
+
+button {
+  background-color: #292929;
+  color: #ccc;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: 300ms;
+  text-shadow: #fff 0 0 0.5rem, rgba(255, 255, 255, 0.2) 0 0 5rem;
+}
+
+button:hover {
+  text-shadow: #fff 0 0 0.5rem, rgba(255, 255, 255, 0.7) 0 0 5rem, slategray 0 0 6rem;
+  background-color: #383838;
+}
+
+code {
+  background-color: ivory;
+}
+
+input:focus,
+button:focus {
+  outline: white;
+  box-shadow: #fff 0 0 0.5rem, rgba(255, 255, 255, 0.2) 0 0 5rem;
 }

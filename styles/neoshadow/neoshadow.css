@@ -10,17 +10,10 @@
 @import url(./neumorph.css);
 @import url(./layout.css);
 
-<<<<<<< HEAD
 :root {
     --ns-accent: #dc143c;
     --ns-bg: #282828;
     --ns-light: #c8c8c8;
-=======
-html {
-  --ns-accent: #dc143c;
-  --ns-bg: #282828;
-  --ns-light: #c8c8c8;
->>>>>>> 8d092fee166d2d39ccf1678b4cbf4e2384bf02da
 
   /* neomorph */
   --ns-shade: hsla(0, 0%, 0%, 15%);

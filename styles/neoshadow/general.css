@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  color: var(--ns-light);
+  color: var(--ns-white);
   background-color: var(--ns-bg);
   font-family: 'Share Tech';
 }

@@ -1,4 +1,12 @@
-.ns-neomorph {
+.ns-neumorph {
   --reflection: 0.08;
   --elevation: 0.08;
+
+  --sdshade: calc(var(--width) * var(--elevation));
+  --sdlight: calc(var(--width) * var(--reflection));
+
+  box-shadow: var(--sdshade) var(--sdshade) calc(var(--sdshade) *2) var(--ns-shade),
+  calc(var(--sdlight) * -1) calc(var(--sdlight) * -1) calc(var(--sdlight) *2) var(--ns-light);
+
+  border-radius: 25px;
 }

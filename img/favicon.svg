@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="8" height="10" version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!-- Ehzemquey, the old shade rune for "energy" -->
+	<polyline points="
+        2, 1
+        2, 9
+    " stroke="crimson" stroke-width="1" stroke-linecap="round"/>
+    <polyline points="
+        4, 1
+        4, 5
+        6, 5
+    " stroke="crimson" stroke-width="1" stroke-linecap="round" fill="transparent"/>
+    <polyline points="
+        4, 7
+        4, 9
+    " stroke="crimson" stroke-width="1" stroke-linecap="round"/>
+    <polyline points="6, 1 6, 1" stroke="crimson" stroke-width="1" stroke-linecap="round" fill="transparent"/>
+    <polyline points="6, 3 6, 3" stroke="crimson" stroke-width="1" stroke-linecap="round" fill="transparent"/>
+</svg>

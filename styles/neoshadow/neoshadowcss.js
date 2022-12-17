@@ -4,18 +4,13 @@
  *  )  (  )__)  )(_)( \__ \ ) _ (  /(__)\  )(_) ))(_)(  )    (  *
  * (_)\_)(____)(_____)(___/(_) (_)(__)(__)(____/(_____)(__/\__) *
  * NEOSHADOW - The much better successor to shadow.css          *
+ * Dynamics JS script                                           *
 \*==============================================================*/
 
-@import url(./general.css);
-@import url(./neumorph.css);
-@import url(./layout.css);
+(function render(){
+    const $$ = document.querySelectorAll.bind(document)
+    $$(".ns-neumorph").forEach(elem => elem.style.setProperty("--width", `${Math.floor(elem.getBoundingClientRect().width)}px`));
 
-:root {
-  --ns-accent: #dc143c;
-  --ns-bg: #282828;
-  --ns-white: #c8c8c8;
-
-  /* neomorph */
-  --ns-shade: hsla(0, 0%, 0%, 25%);
-  --ns-light: hsla(0, 0%, 100%, 5%);
-}
+    // efficient animation loop
+    window.requestAnimationFrame(render);
+})()

@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="10" height="10" version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!-- Octalwey, the old shade rune for "encompassing" -->
+    <polyline points="
+        1, 1
+        1, 9
+        6, 9
+    " stroke="crimson" stroke-width="1" stroke-linecap="round" fill="transparent"/>
+    <polyline points="
+        4, 1
+        9, 1
+        9, 9
+    " stroke="crimson" stroke-width="1" stroke-linecap="round" fill="transparent"/>
+</svg>

@@ -1,8 +1,8 @@
 # More me.
 <br/><br/>
 
-### Showroom
-Where I show off styles and scripty things I've made. [Enter >](./showroom/index.html)
+### n#
+The latest and greatest article-type viewer with all the features you don't need, right [here!](./n#) 
 
 ### Projects
 - [Shadow boi animation](./sba/index.md)

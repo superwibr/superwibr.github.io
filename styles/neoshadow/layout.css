@@ -46,6 +46,7 @@ body {
 
   --elevation: 0;
   opacity: 0;
+  z-index: -1;
   transition: ease-in 0.5s;
 }
 img.ns-rune {
@@ -57,6 +58,7 @@ img.ns-rune {
 :is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(3) > :checked) > .ns-neopanel:nth-child(3) {
   --elevation: 0.1;
   opacity: 1;
+  z-index: 0
 }
 
 /* rune selectors */

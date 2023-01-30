@@ -5,27 +5,10 @@
 
 var n = {
     async navigate(path) {
-        const qparams = new URLSearchParams(location.search),
-            origin = qparams.get("origin") ? decodeURI(qparams.get("origin")) : location.origin,
-            uri = origin + path,
-            content = await fetch(uri).then(res => res.text()),
-            body1 = document.querySelector(".ns-body > #localbody"),
-            iframe = document.querySelector(".ns-body > iframe"),
-            ifdoc = iframe.contentWindow.document;
-
-        if (location.origin == origin) {
-            iframe.style.display = "none";
-            body1.style.display = "block"
-            body1.innerHTML = content;
-            n.convertAnchors();
-        } else {
-            iframe.style.display = "block";
-            body1.style.display = "none";
-            ifdoc.open();
-            ifdoc.write(content);
-        }
+        document.querySelector(".ns-body").innerHTML =
+            await fetch(new URL(path, location.origin).href).then(res => res.text());
+        n.convertAnchors();
     },
-
     async convertAnchors() {
         for (const anchor of document.querySelectorAll("a")) {
             console.log(anchor.getAttribute("href"))
@@ -38,7 +21,7 @@ var n = {
         }
     },
     async parsePath(path) {
-        const url = await fetch(location.origin + location.hash.substring(1), {method:"HEAD"}).then(res => res.url);
+        const url = await fetch(location.origin + location.hash.substring(1), { method: "HEAD" }).then(res => res.url);
         return new URL(path, url).href.substring(location.origin.length);
     }
 };

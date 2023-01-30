@@ -28,7 +28,7 @@ body {
   grid-area: 3/3;
 }
 
-:is(.ns-header, .ns-left, .ns-body, .ns-right, .ns-footl, .ns-footc, .ns-footr) {
+:is(.ns-header, .ns-left, .ns-right, .ns-footl, .ns-footc, .ns-footr) {
   display: grid;
   place-items: center;
 }

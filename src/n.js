@@ -11,11 +11,9 @@ var n = {
     },
     async convertAnchors() {
         for (const anchor of document.querySelectorAll("a")) {
-            console.log(anchor.getAttribute("href"))
             // only applies to relative urls. Basic test if starts with a period or a slash
             if (anchor.getAttribute("href").match(/^[.\/]/)) {
                 const path = await n.parsePath(anchor.getAttribute("href"));
-                console.log(path)
                 anchor.href = "#" + path;
             };
         }

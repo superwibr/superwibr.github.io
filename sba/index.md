@@ -1,7 +1,7 @@
 # Shadow boi animations
 
-- [JS Catboy](./jscatboy.html)
+- [JS Catboy](https://superwibr.github.io/sba/jscatboy.html)
 
 
 # Other things
-- [Un village Autochtone](./hisproj.html)
+- [Un village Autochtone](https://superwibr.github.io/sba/hisproj.html)

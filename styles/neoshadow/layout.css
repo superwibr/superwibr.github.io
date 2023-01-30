@@ -13,7 +13,7 @@ body {
   grid-area: 2/1;
 }
 .ns-body {
-  grid-area: 2/2;
+  grid-area: 2/2/2/4;
 }
 .ns-right {
   grid-area: 2/3;

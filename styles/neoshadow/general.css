@@ -14,6 +14,7 @@ body {
   color: var(--ns-white);
   background-color: var(--ns-bg);
   font-family: 'Share Tech';
+  line-height: 1.4rem;
 }
 
 a {

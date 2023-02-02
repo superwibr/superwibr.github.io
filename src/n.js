@@ -10,7 +10,7 @@ var n = {
         this.convertRefs();
     },
     async convertRefs() {
-        for (const ref of document.querySelectorAll(":is([href], [src])")) {
+        for (const ref of document.querySelectorAll(".ns-body :is([href], [src])")) {
             // only applies to relative urls. Basic test if starts with a period or a slash
             if (this.getRef(ref).match(/^[.\/]/)) {
                 const path = await this.parsePath(this.getRef(ref));

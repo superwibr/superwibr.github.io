@@ -1,0 +1,8 @@
+**INFO ABOUT SCENEXE SCRIPTS**
+
+Most are defunct. Pretty obvious. Some have been deleted, just look through the commit history before this file to find them.
+Some are working, and are mildly to greatly useful.
+
+fovmod.js :: still works to alter the FOV using the scrollwheel. This is not really cheating as you can't see what's outside of your actual FOV but since the FOV area us a square you can see parts that would fall ofscreen.
+
+scenenavlib.js :: mini lib to make a scenexe client navigate, pathfind, etc.

@@ -21,16 +21,16 @@
         event.keyCode = keyCode;
         document.dispatchEvent(event);
     };
-    const msim = function (type, [x, y]) {
+    const msim = function (type, [x, y] = [0, 0]) {
         const event = new MouseEvent((type == "click") ? "click" : "mouse" + type, { bubbles: true, cancelable: false, clientX: x, clientY: y });
         document.dispatchEvent(event);
     };
     msim.clickAndHold = function ([x, y]) {
         ["over", "down", "click"].forEach(function (eventType) {
-            msim(eventType, x, y);
+            msim(eventType, [x, y]);
         });
     };
-    const cxyp = (x, y) => [x / 100 * window.clientX, y / 100 * window.clientY];
+    const cxyp = (px, py) => [px / 100 * window.innerWidth, py / 100 * window.innerHeight];
 
     //
     // directional and movement math

@@ -21,6 +21,28 @@
         event.keyCode = keyCode;
         document.dispatchEvent(event);
     };
+    kbsim.wasd = function([dx, dy]) {
+        kbsim(87, "up");
+        kbsim(65, "up");
+        kbsim(83, "up");
+        kbsim(68, "up");
+        switch(dx){
+            case 1:
+                kbsim(68);
+                break;
+            case -1:
+                kbsim(65);
+                break;
+        };
+        switch(dy){
+            case 1:
+                kbsim(83);
+                break;
+            case -1:
+                kbsim(87);
+                break;
+        };
+    };
     const msim = function (type, [x, y]) {
         const event = new MouseEvent((type == "click") ? "click" : "mouse" + type, { bubbles: true, cancelable: false, clientX: x, clientY: y });
         document.dispatchEvent(event);

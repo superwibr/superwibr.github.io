@@ -5,4 +5,8 @@ Some are working, and are mildly to greatly useful.
 
 fovmod.js :: still works to alter the FOV using the scrollwheel. This is not really cheating as you can't see what's outside of your actual FOV but since the FOV area us a square you can see parts that would fall ofscreen.
 
-scenenavlib.js :: mini lib to make a scenexe client navigate, pathfind, etc.
+scenenavlib.js :: medium sized lib to make a scenexe client navigate, pathfind, etc. (requires hidsim.js)
+
+packetdebug.js :: allows for debugging scenexe packets and infering the xurrent xor key (requires hidsim.js)
+
+tikups_exe.user.js :: fully fledged scenexe.io multitab client with pathing and fuckery

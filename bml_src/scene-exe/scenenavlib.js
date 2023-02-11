@@ -1,6 +1,6 @@
 !function () {
     // bit of promotion, aye?
-    document.title = "NAVLIB - By Tikup#8555";
+    document.title = "nav - By Tikup#8555";
 
     window.exe || (window.exe = new Object());
     let target = [0, 0],
@@ -9,7 +9,7 @@
         tolerance = 100;
 
     // hidsim component
-    if(!exe.hidsim) throw new TypeError("[Tikup's EXE: SCENENAVLIB] Missing the HIDSIM component.")
+    if(!exe.hidsim) throw new TypeError("[Tikup's EXE: SCENEnav] Missing the HIDSIM component.")
     const {kbsim, msim, cxyp} = exe.hidsim
 
     //
@@ -62,14 +62,14 @@
     }();
 
     // exposed methods
-    const navlib = new Object();
-    navlib.bot = () => mode = 1;
-    navlib.unbot = () => mode = 0;
-    navlib.clearTasks = () => action = () => 0;
-    navlib.tickTime = (ms) => tickTime = ms;
-    navlib.setTolerance = (d) => tolerance = d;
+    const nav = new Object();
+    nav.bot = () => mode = 1;
+    nav.unbot = () => mode = 0;
+    nav.clearTasks = () => action = () => 0;
+    nav.tickTime = (ms) => tickTime = ms;
+    nav.setTolerance = (d) => tolerance = d;
 
-    navlib.afk = () => (target = coords, action = navline);
+    nav.afk = () => (target = coords, action = navline);
 
-    exe.navlib = navlib;
+    exe.nav = nav;
 }();

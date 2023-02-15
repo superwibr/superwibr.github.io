@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -18,9 +19,14 @@ body {
   overflow: hidden;
 }
 
+p {
+  white-space: pre-line;
+}
+
 a {
   color: #ccc;
 }
+
 a:hover {
   background-color: #383838;
 }

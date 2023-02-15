@@ -1,32 +1,47 @@
 body {
   display: grid;
   width: 100vw;
-  height: 100%;
-  grid-template-rows: 1fr 10fr 1fr;
-  grid-template-columns: 20em 3fr 1fr;
+  height: 100vh;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 10fr) minmax(0, 1fr);
+  grid-template-columns: 20em minmax(0, 3fr) minmax(0, 1fr);
+  
+  min-width: 0;
+  min-height: 0;
 }
 
 .ns-header {
   grid-area: 1/1/2/4;
 }
+
 .ns-left {
   grid-area: 2/1;
 }
+
 .ns-body {
   grid-area: 2/2/2/4;
   max-width: 100%;
-  max-height: 100%;
+
+  height: 100%;
+  max-height: -webkit-fill-available; /* I hate webkit. */
+
   overflow: hidden scroll;
+
+  box-sizing: border-box;
+  padding-left: 1em
 }
+
 .ns-right {
   grid-area: 2/3;
 }
+
 .ns-footl {
   grid-area: 3/1;
 }
+
 .ns-footc {
   grid-area: 3/2;
 }
+
 .ns-footr {
   grid-area: 3/3;
 }
@@ -35,13 +50,14 @@ body {
   display: grid;
   place-items: center;
 }
+
 :is(.ns-left, .ns-right) {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
 }
 
 /* the funky selection stuff */
-:is(.ns-left, .ns-right) > .ns-neopanel {
+:is(.ns-left, .ns-right)>.ns-neopanel {
   grid-area: 1/1;
   width: 80%;
   height: 100%;
@@ -52,13 +68,15 @@ body {
   z-index: -1;
   transition: ease-in 0.5s;
 }
+
 img.ns-rune {
   width: 1rem;
   float: top;
 }
-:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(1) > :checked) > .ns-neopanel:nth-child(1),
-:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(2) > :checked) > .ns-neopanel:nth-child(2),
-:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(3) > :checked) > .ns-neopanel:nth-child(3) {
+
+:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(1) > :checked)>.ns-neopanel:nth-child(1),
+:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(2) > :checked)>.ns-neopanel:nth-child(2),
+:is(.ns-left, .ns-right):has(~ :is(.ns-footl, .ns-footr) :nth-child(3) > :checked)>.ns-neopanel:nth-child(3) {
   --elevation: 0.1;
   opacity: 1;
   z-index: 0
@@ -68,12 +86,15 @@ img.ns-rune {
 .ns-runecheckbox {
   display: none;
 }
+
 label:has(> .ns-runecheckbox) {
   color: var(--ns-accent);
   cursor: pointer;
   display: inline;
   transition: 1s;
 }
-label:has(> .ns-runecheckbox:checked), img.ns-rune {
+
+label:has(> .ns-runecheckbox:checked),
+img.ns-rune {
   filter: drop-shadow(0 0 0.5rem firebrick) drop-shadow(0 0 0.2rem orangered);
 }

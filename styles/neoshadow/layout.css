@@ -30,6 +30,9 @@ body {
   box-sizing: border-box;
   padding-left: 1em
 }
+.ns-body :is(p, h1, h2, h3, h4, h5) {
+  max-width: 60rem;
+}
 
 .ns-right {
   grid-area: 2/3;

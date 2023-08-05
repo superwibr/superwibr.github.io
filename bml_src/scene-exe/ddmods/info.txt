@@ -1,0 +1,13 @@
+**INFO ABOUT DOSHEN DANBERG SCRIPTS**
+
+A more modular approach to the old scenexe scripts, making the api more acessible so it's easier to update things without completely rewriting them.
+
+doshen.js :: mod loader, contains initializers for all other scripts that are meant to work together
+
+mods & modules included without modification:
+- hidsim
+- fovmod
+
+navlib.js :: remade navlib which can now be configured to use hidsim or packets
+
+packetd.js :: packet decryption, injection

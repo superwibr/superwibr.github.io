@@ -10,6 +10,15 @@
     // Key Finding
     //
 
+    // connection saver
+    !function(){
+        const _send = WebSocket.prototype.send; // save original
+        WebSocket.prototype.send = function(data){
+            window.connection = this; // save connection for listening
+            _send.call(this, data);
+        }
+    }();
+
     // find client key
     const xorkey = await new Promise(res => {
         const teststr = "\u200B",
@@ -18,8 +27,6 @@
             _send = WebSocket.prototype.send; // save original
 
         WebSocket.prototype.send = function (data) { // patch send method to intercept outgoing message
-            window.connection = this; // save connection for listening later
-
             const copy = data.slice(),
                 packetContent = copy.slice(0, copy.length - 1),
                 buffer = [];
@@ -30,7 +37,7 @@
                     WebSocket.prototype.send = _send; // restore original send function
                     res(buffer[0]);
                 };
-            }
+            };
 
             _send.call(this, data);
         };
@@ -58,11 +65,11 @@
     // decoder, encoder
     const
         xd = key => function (packet) {
-            const copy = packet.slice();
-            for (const [i] of copy.entries()) copy[i] ^= key;
+            const copy = [];
+            for (const int of new Uint8Array(packet)) copy.push(int ^ key);
 
             const type = copy.at(-1),
-                content = msgpackr.unpack(copy.slice(0, copy.length - 1));
+                content = msgpackr.unpack(new Uint8Array(copy).slice(0, copy.length - 1));
             return [type, content];
         },
         xe = key => function (assembled) {
@@ -105,5 +112,5 @@
         xorkey,
         serverxor,
         ...packet
-    }
-})
+    };
+});

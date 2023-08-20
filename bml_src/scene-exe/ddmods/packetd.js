@@ -12,7 +12,7 @@
 
     // find client key
     const xorkey = await new Promise(res => {
-        const teststr = "Doshen Danberg",
+        const teststr = "\u200B",
             testarr = msgpackr.pack(teststr),
             input = document.querySelector("#chat-input"),
             _send = WebSocket.prototype.send; // save original

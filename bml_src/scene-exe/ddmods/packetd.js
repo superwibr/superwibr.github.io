@@ -6,7 +6,11 @@
     const msgpackr = window.msgpackr;
     const { hidsim } = exe;
 
-    // find key
+    //
+    // Key Finding
+    //
+
+    // find client key
     const xorkey = await new Promise(res => {
         const teststr = "Doshen Danberg",
             testarr = msgpackr.pack(teststr),
@@ -14,7 +18,7 @@
             _send = WebSocket.prototype.send; // save original
 
         WebSocket.prototype.send = function (data) { // patch send method to intercept outgoing message
-            window.connection = this;
+            window.connection = this; // save connection for listening later
 
             const copy = data.slice(),
                 packetContent = copy.slice(0, copy.length - 1),
@@ -39,26 +43,40 @@
         hidsim.kbsim(13, "down");
         hidsim.kbsim(13, "up");
     });
-    log("[PAKD] Found packet XOR key");
+    log("[PAKD] Found client packet XOR key: " + xorkey);
+
+    // find server key
+    const serverxor = (function () {
+        const e = new Event('message'),
+            u = Uint8Array.of(0);
+        e.data = u.buffer;
+        window.connection.dispatchEvent(e);
+        return u[0];
+    })();
+    log("[PAKD] (don't mind the error) Found server packet XOR key: " + serverxor);
 
     // decoder, encoder
     const
-        xd = function (packet) {
+        xd = key => function (packet) {
             const copy = packet.slice();
-            for (const [i] of copy.entries()) copy[i] ^= xorkey;
+            for (const [i] of copy.entries()) copy[i] ^= key;
 
             const type = copy.at(-1),
                 content = msgpackr.unpack(copy.slice(0, copy.length - 1));
             return [type, content];
         },
-        xe = function (assembled) {
+        xe = key => function (assembled) {
             let packet = msgpackr.pack(assembled[1]);
             packet = new Uint8Array([...packet, assembled[0]]);
 
-            for (const [i] of packet.entries()) packet[i] ^= xorkey;
+            for (const [i] of packet.entries()) packet[i] ^= key;
 
             return packet;
-        }
+        },
+        cxd = xd(xorkey),
+        cxe = xe(xorkey),
+        sxd = xd(serverxor),
+        sxe = xe(serverxor);
 
     // debugger
     const
@@ -69,7 +87,7 @@
                 const _send = this._send = WebSocket.prototype.send;
 
                 WebSocket.prototype.send = function (data) {
-                    let packet = xd(data);
+                    let packet = cxd(data);
 
                     if (typeof packet_ignores.find(n => n == packet[0]) == 'undefined') console.log(packet);
 
@@ -78,13 +96,14 @@
             },
             undebug() { WebSocket.prototype.send = _send },
             ignore(...args) { for (const t of args) packet_ignores.push(t) },
-            xd, xe,
-            inject(ap) { window.connection.send(xe(ap)) }
+            cxd, cxe, sxd, sxe,
+            inject(ap) { window.connection.send(cxe(ap)) }
         };
 
     // bundle up, minor api, return
     return {
         xorkey,
+        serverxor,
         ...packet
     }
 })

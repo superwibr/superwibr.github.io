@@ -10,4 +10,4 @@ mods & modules included without modification:
 
 navlib.js :: remade navlib which can now be configured to use hidsim or packets
 
-packetd.js :: packet decryption, injection
+packetd.js :: packet decryption and injection

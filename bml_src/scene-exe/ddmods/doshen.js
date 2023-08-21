@@ -1,6 +1,6 @@
 !function () {
     // debug
-    const log = message => console.log(`%c[DOSHEN] %c${message}`, `color:goldenrod;font-weight:bold`, "")
+    const log = message => console.log(`%c[DOSHEN] %c${message}`, `color:goldenrod;font-weight:bold`, "");
 
     // init objects
     if (typeof exe === 'object') log("[WARN] `exe` global already defined, some issues may arise if you didn't stop the previous instance.");
@@ -15,21 +15,21 @@
         _modules: {
             msgpackr: {
                 env: "global",
-                uri: "https://superwibr.github.io/bml_src/msgpackr.js"
+                uri: "./bml_src/msgpackr.js"
             },
             fovmod: {
                 env: "global",
-                uri: "https://superwibr.github.io/bml_src/scene-exe/fovmod.js"
+                uri: "./bml_src/scene-exe/fovmod.js"
             },
             hidsim: {
-                env: "local",
+                env: "global",
                 name: "hidsim",
-                uri: "https://superwibr.github.io/bml_src/hidsim.js"
+                uri: "./bml_src/hidsim.js"
             },
             packetd: {
                 env: "module",
                 name: "pakd",
-                uri: "https://superwibr.github.io/bml_src/scene-exe/ddmods/packetd.js"
+                uri: "./bml_src/scene-exe/ddmods/packetd.js"
             }
         },
         load: async function (modname) {
@@ -38,7 +38,7 @@
             if (!modEntry) return log(`[ERR] module "${modname}" not found`);
             if (modEntry.loaded) return; // stop from loading already loaded modules
 
-            const mod = await fetch(modEntry.uri).then(res => res.text());
+            const mod = await fetch("https://superwibr.github.io/" + modEntry.uri).then(res => res.text());
 
             switch (modEntry.env) {
                 case "global": // global scope eval for modules which define themselves
@@ -59,6 +59,10 @@
 
             modEntry.loaded = true; // tag loaded modules so we don't re-load them
             log(`Loaded ${modname} ${(modEntry.env != "global" && modEntry.name) ? `at exe.${modEntry.name}` : ""}`);
+        },
+        loadall: async function(){
+            const mods = Object.keys(this._modules);
+            for (const mod of mods) await this.load(mod);
         }
-    }
-}
+    };
+}();

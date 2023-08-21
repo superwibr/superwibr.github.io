@@ -1,7 +1,4 @@
 !function () {
-	// bit of promotion, aye?
-	document.title = "FOVMOD - By Tikup#8555";
-
 	// numbers
 	let multiplier = 0.001,
 		fov = 1;

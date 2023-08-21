@@ -135,10 +135,7 @@
 		const type = typetests[name];
 
 		// cache
-		if (type.number) {
-			log("[PAKD] Fetched " + name + " from cache: " + type.number);
-			return type.number;
-		};
+		if (type.number) return type.number;
 
 		switch (type.from) { // testing
 			case "client": {

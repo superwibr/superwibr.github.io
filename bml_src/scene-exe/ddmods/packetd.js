@@ -6,6 +6,9 @@
 	const msgpackr = window.msgpackr;
 	const { hidsim } = exe;
 
+	// one send to rule them all (root storage for injector)
+	const _SEND = WebSocket.prototype.send;
+
 	//
 	// Key Finding
 	//
@@ -168,8 +171,21 @@
 	//
 	// Game Update accumulator
 	//
-	let state, miss = 0, pass = 0;
-	window.connection.addEventListener("message", async function ({ data }) {
+	let state = [[], [], [], [], []];
+	let miss = 0, pass = 0;
+
+	const adm = (target, source) => (target.length < source.length ? source : target).map((el, i) => source[i] === null ? target[i] : source[i]);
+	const arrayidtoobj = arrayids => {
+		const out = {};
+		arrayids.forEach(array => out[array[0]] = array)
+		return out;
+	};
+	const idmerger = (target, diff) => {
+		const oriobj = arrayidtoobj(target);
+		return diff.map(arr => oriobj[arr[0]] ? adm(oriobj[arr[0]], arr) : arr)
+	}
+
+	const stateeater = async function ({ data }) {
 		data = new Uint8Array(data);
 		const type = data.at(-1);
 
@@ -179,8 +195,19 @@
 		const packet = msgpackr.unpack(data.slice(0, data.length - 1));
 
 		// merge new state
-		state = packet;
-	});
+		state = [
+			adm(state[0], packet[0]), // self data
+			idmerger(state[1], packet[1]), // player/tank data
+			idmerger(state[2], packet[2]), // polygon data
+			idmerger(state[3], packet[3]), // trap data (?)
+			idmerger(state[4], packet[4]), // ?
+		];
+	}
+	const reattach = function () {
+		window.connection.removeEventListener("message", stateeater);
+		window.connection.addEventListener("message", stateeater)
+	};
+	reattach();
 
 	// game_update decoding ratio thingy
 	document.querySelector("#debug-mode").insertAdjacentHTML("beforeend", `<p id="decode-ratio" style="font-size: 2vmin;"></p>`);
@@ -195,13 +222,52 @@
 	}, 200);
 
 	//
+	// Packet blocker
+	//
+	const blocking = new Set();
+	!function () {
+		const _send = WebSocket.prototype.send;
+		WebSocket.prototype.send = function (data) {
+			let packet = cxd(data);
+			if (blocking.has(packet[0])) return;
+			_send.call(this, data);
+		};
+	}();
+	const blocker = {
+		block(id) { blocking.add(id) },
+		unblock(id) { blocking.delete(id) }
+	};
+
+	//
 	// API and utilities
 	//
+
+	// gamestate api
+	const gstate = {
+		reattach,
+		iddata(id, raw) {
+			const players = {
+				...arrayidtoobj([state[0]]),
+				...arrayidtoobj(state[1])
+			};
+			const player = players[id];
+			if (!player) return { pos: [NaN, NaN] }; // return if not found
+
+			if (raw) return player; // raw playerdata
+			return { // playerdata
+				pos: player.slice(2, 4),
+				rot: player[4],
+				uname: player[12]
+			};
+		},
+		unamedata(uname) { this.iddata(state[1].find(pdat => pdat.includes(uname))[0]) }, // can't find own username
+		get raw() { return state }
+	};
 
 	// debugger
 	const
 		_send = WebSocket.prototype.send,
-		packet_ignores = [],
+		packet_ignores = new Set,
 		packet = {
 			debug() {
 				const _send = this._send = WebSocket.prototype.send;
@@ -209,23 +275,25 @@
 				WebSocket.prototype.send = function (data) {
 					let packet = cxd(data);
 
-					if (typeof packet_ignores.find(n => n == packet[0]) == 'undefined') console.log(packet);
+					if (!packet_ignores.has(packet[0])) console.log(packet);
 
 					_send.call(this, data);
 				};
 			},
 			undebug() { WebSocket.prototype.send = _send },
-			ignore(...args) { for (const t of args) packet_ignores.push(t) },
+			ignore(...args) { for (const t of args) packet_ignores.add(t) },
+			unignore(...args) { for (const t of args) packet_ignores.delete(t) },
 			de: { cxd, cxe, sxd, sxe },
-			inject(ap) { window.connection.send(cxe(ap)) },
+			inject(ap) { _SEND.call(window.connection, cxe(ap)) }, // injector that bypasses blocker for pupetting
 			type,
-			async typeall() { for (const name of Object.keys(typetests)) await type(name) }
+			async typeall() { for (const name of Object.keys(typetests)) await type(name) },
 		};
 
 	// bundle up, minor api, return
 	return {
 		xor,
 		...packet,
-		state
+		...blocker,
+		state: gstate
 	};
 });

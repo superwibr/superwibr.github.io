@@ -30,6 +30,11 @@
 				env: "module",
 				name: "pakd",
 				uri: "./bml_src/scene-exe/ddmods/packetd.js"
+			},
+			navlib: {
+				env: "module",
+				name: "nav",
+				uri: "./bml_src/scene-exe/ddmods/navlib.js"
 			}
 		},
 		load: async function (modname) {

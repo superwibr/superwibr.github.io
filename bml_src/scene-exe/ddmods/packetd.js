@@ -163,7 +163,36 @@
 
 			default: return -1;
 		};
-	}
+	};
+
+	//
+	// Game Update accumulator
+	//
+	let state, miss = 0, pass = 0;
+	window.connection.addEventListener("message", async function ({ data }) {
+		data = new Uint8Array(data);
+		const type = data.at(-1);
+
+		if (type !== 0) return miss++; // about 1/15 game_update packets is not decoded by the game fast enough
+		pass++ // keep track of those amounts to form a statistic
+
+		const packet = msgpackr.unpack(data.slice(0, data.length - 1));
+
+		// merge new state
+		state = packet;
+	});
+
+	// game_update decoding ratio thingy
+	document.querySelector("#debug-mode").insertAdjacentHTML("beforeend", `<p id="decode-ratio" style="font-size: 2vmin;"></p>`);
+	const drat = document.querySelector("#decode-ratio");
+	const gcd = (a, b) => (!b) ? a : gcd(b, a % b);
+	setInterval(() => { // here's your statistic
+		drat.innerText = `[PAKD] Decode success rate: ${((1 - miss / pass) * 100).toFixed(1)}%`;
+
+		const div = gcd(miss, pass); // try to reduce
+		miss /= div;
+		pass /= div;
+	}, 200);
 
 	//
 	// API and utilities
@@ -196,6 +225,7 @@
 	// bundle up, minor api, return
 	return {
 		xor,
-		...packet
+		...packet,
+		state
 	};
 });

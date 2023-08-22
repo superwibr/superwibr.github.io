@@ -255,7 +255,7 @@
 
 			if (raw) return player; // raw playerdata
 			return { // playerdata
-				pos: player.slice(2, 4),
+				pos: [player[2], -player[3]],
 				rot: player[4],
 				uname: player[12]
 			};

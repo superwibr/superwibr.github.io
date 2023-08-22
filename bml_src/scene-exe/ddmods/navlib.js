@@ -39,7 +39,7 @@
 		navdata.self = JSON.parse(`[${document.querySelector("#position").innerText.split("Position: ")[1]}]`);
 
 		// alpha movement
-		navdata.dest = pakd.state.iddata(navdata.target).dest;
+		navdata.dest = pakd.state.iddata(navdata.target).pos;
 		if(navdata.mode) beeline(pakmove)(navdata.self, navdata.dest, navdata.tolerance);
 	}, 200);
 

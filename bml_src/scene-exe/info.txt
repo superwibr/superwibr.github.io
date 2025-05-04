@@ -9,4 +9,8 @@ scenenavlib.js :: medium sized lib to make a scenexe client navigate, pathfind, 
 
 packetdebug.js :: allows for debugging scenexe packets and infering the xurrent xor key (requires hidsim.js)
 
-tikups_exe.user.js :: fully fledged scenexe.io multitab client with pathing and fuckery
+tikups_exe.js :: fully fledged scenexe.io multitab client with pathing and fuckery, quite borked
+
+danberg.js :: it's like danburg but 100% just pathfinding.
+
+ddmods :: modular Doshen Danberg(tm) modifications for scenexe.

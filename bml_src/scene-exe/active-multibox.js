@@ -1,4 +1,4 @@
-!async function () {
+!async function () { // defunct
 	//
 	// js & util
 	//

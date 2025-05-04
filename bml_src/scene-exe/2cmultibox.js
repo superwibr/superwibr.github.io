@@ -1,4 +1,4 @@
-// bad ish multibox.
+// bad ish multibox. defunct.
 !async function () {
 	"use strict"
 	window.exe = new Object();

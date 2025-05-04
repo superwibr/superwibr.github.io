@@ -1,4 +1,4 @@
-!function () {
+!function (source) {
 	// debug
 	const log = message => console.log(`%c[DOSHEN] %c${message}`, `color:goldenrod;font-weight:bold`, "");
 
@@ -43,7 +43,7 @@
 			if (!modEntry) return log(`[ERR] module "${modname}" not found`);
 			if (modEntry.loaded) return; // stop from loading already loaded modules
 
-			const mod = await fetch("https://superwibr.github.io/" + modEntry.uri).then(res => res.text());
+			const mod = await fetch(source + modEntry.uri).then(res => res.text());
 
 			switch (modEntry.env) {
 				case "global": // global scope eval for modules which define themselves
@@ -70,4 +70,4 @@
 			for (const mod of mods) await this.load(mod);
 		}
 	};
-}();
+}("https://superwibr.github.io/");

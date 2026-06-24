@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TIKDM</title>
+	<meta name="description" content="GhostSpoon's shady private upload list">
+	<meta name="keywords" content="ghostspoon, gspn, upload, list">
+
+	<!-- load service worker comms first -->
+	<!-- <script src="/src/comms.js" type="module"></script> -->
+
+	<link rel="stylesheet" href="/style/shadow.css">
+	<link rel="stylesheet" href="/style/layout.css">
+
+	<script src="./src/page.js" type="module"></script>
+</head>
+<body>
+	<header>
+		<a href="/">HOME</a>
+		<span class="spacer"> / </span>
+		<a href="../">..</a>
+		<span class="spacer"> / </span>
+		<a href="/list">LIST</a>
+		<span class="spacer"> / </span>
+		<a href="/help">HELP</a>
+		<span style="margin-left:auto" id="cachetag"></span>
+	</header>
+	<div class="main">
+		<div id="teehee" style="visibility:hidden;">
+			teehee
+		</div>
+		<div id="huh" style="visibility:hidden;">
+			if this is your first time, you may need to reload.<br>
+			the url path may also lead to a broken or nonexistant page.<br>
+			otherwise, befriend the hard reload. or something.
+		</div>
+		<noscript>
+			I rely on scripts for my routing and other things.<br>
+			If they're off for safety or privacy but you want to use the list, you're just gonna have to trust me :)<br>
+			If you have any doubts, go dig in the repo.
+		</noscript>
+		<script>
+			const show = id => {try{document.querySelector(`#${id}`).style.visibility = "visible";}catch(e){};};
+			setTimeout(() => show("teehee"), 1000);
+			setTimeout(() => show("huh"), 2000);
+		</script>
+	</div>
+</body>
+</html>

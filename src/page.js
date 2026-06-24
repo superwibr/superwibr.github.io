@@ -26,11 +26,13 @@ const loadPage = async function (key, bypassindex = false) {
 	// display content and load scripts
 	main.innerHTML = content;
 	document.title = p.title;
-	main.querySelectorAll("script").forEach(Cicero.replaceAndRunScript);
+
 	main.querySelectorAll("[src]").forEach(sourced => sourced.src = new URL(
 		sourced.getAttribute("src"),
 		new URL(path, location)
 	));
+
+	main.querySelectorAll("script").forEach(Cicero.replaceAndRunScript);
 };
 
 const route = new Cicero();

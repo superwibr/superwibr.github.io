@@ -5,7 +5,6 @@ import pages from "/pages/0.js";
 
 const loadPage = async function (key, bypassindex = false) {
 	const main = document.querySelector(".main");
-	// const cachetag = document.querySelector("#cachetag");
 	const path = `/pages/${key}/index.html`;
 
 	const p = bypassindex

@@ -3,16 +3,23 @@ export default {
 	welcome: {
 		title: "TIKDM - Welcome",
 		name: "WELCOME PAGE",
-		tags: ["invis"]
+		tags: ["invis", "sys"]
 	},
 	list: {
 		title: "TIKDM - List",
 		name: "PAGE LIST",
-		tags: ["invis"]
+		tags: ["invis", "sys"]
 	},
 	help: {
 		title: "TIKDM - Help",
 		name: "HELP",
+		tags: ["invis", "sys"]
+	},
+
+	// archive
+	archived: {
+		title: "Archive (superwibr)",
+		name: "OLD SITE ARCHIVE",
 		tags: ["invis"]
 	},
 

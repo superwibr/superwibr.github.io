@@ -20,7 +20,8 @@ export default {
 	archived: {
 		title: "Archive (superwibr)",
 		name: "OLD SITE ARCHIVE",
-		tags: ["invis"]
+		tags: ["invis"],
+		ex: true
 	},
 
 	// content pages
